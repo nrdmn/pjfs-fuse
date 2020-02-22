@@ -292,14 +292,6 @@ int main(int argc, char **argv)
 
 	struct pjfs_volume vol = pjfs_fs_volume(&fs, pjfs_opts.volume);
 
-	/*const char *block = pjfs_volume_read_virt_block(&vol, 169);
-	struct pjfs_item item = {
-		.vol = &vol,
-		.hdr = block,
-	};
-	struct pjfs_slice sl = pjfs_item_read(&item, 512);
-	printf("%d\n", sl.size);*/
-
 	struct fuse_session *session = fuse_session_new(&args,
 	                                                &ops,
 	                                                sizeof (struct fuse_lowlevel_ops),
