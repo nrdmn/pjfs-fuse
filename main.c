@@ -292,41 +292,47 @@ int main(int argc, char **argv)
 
 	struct pjfs_volume vol = pjfs_fs_volume(&fs, pjfs_opts.volume);
 
+	if (vol.info == NULL) {
+		fputs("no such volume\n", stderr);
+		ret = 9;
+		goto unmap;
+	}
+
 	struct fuse_session *session = fuse_session_new(&args,
 	                                                &ops,
 	                                                sizeof (struct fuse_lowlevel_ops),
 	                                                &vol);
 	if (session == NULL) {
 		fputs("can't create session\n", stderr);
-		ret = 9;
+		ret = 10;
 		goto unmap;
 	}
 
 	if (fuse_set_signal_handlers(session) != 0) {
 		fputs("can't set signal handlers\n", stderr);
-		ret = 10;
+		ret = 11;
 		goto destroy_session;
 	}
 
 	if (fuse_session_mount(session, fuse_opts.mountpoint) != 0) {
 		fputs("can't mount\n", stderr);
-		ret = 11;
+		ret = 12;
 		goto remove_signal_handlers;
 	}
 
 	if (fuse_daemonize(fuse_opts.foreground) != 0) {
 		fputs("can't daemonize\n", stderr);
-		ret = 12;
+		ret = 13;
 		goto umount;
 	}
 
 	if (fuse_opts.singlethread != 0) {
 		if (fuse_session_loop(session) != 0) {
-			ret = 13;
+			ret = 14;
 		}
 	} else {
 		if (fuse_session_loop_mt(session, fuse_opts.clone_fd) != 0) {
-			ret = 14;
+			ret = 15;
 		}
 	}
 
