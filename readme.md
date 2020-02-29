@@ -23,6 +23,9 @@ Current limitations:
 - Little endian support only
 - No timestamps
 
+This program is licensed under the terms of the GNU General Public License version 3 and no later version.
+See license.md for details.
+
 ## How PJFS works
 
 ### Virtual and physical blocks

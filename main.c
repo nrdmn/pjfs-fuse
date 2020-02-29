@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-only
+
 #include <errno.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -202,6 +204,13 @@ static void usage(const char *argv0)
 	       argv0);
 	fuse_cmdline_help();
 	fuse_lowlevel_help();
+	puts("\n"
+	     "Copyright (C) 2020  Nick Erdmann\n"
+	     "This program comes with ABSOLUTELY NO WARRANTY.  It is\n"
+	     "free software, and you are welcome to redistribute and/or\n"
+	     "modify it under the terms of the GNU General Public License\n"
+	     "as published by the Free Software Foundation version 3 and\n"
+	     "no later version.  See license.md for details.");
 }
 
 int main(int argc, char **argv)

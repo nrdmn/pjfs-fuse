@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-only
+
 CFLAGS ?= -Wall -Wextra -pedantic
 
 pjfs-fuse: main.o pjfs.o
